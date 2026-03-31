@@ -1,0 +1,65 @@
+---
+title: MCP Setup
+description: Connect AI coding agents to FeedPin via the Model Context Protocol.
+---
+
+FeedPin has a native MCP server that lets AI coding agents read feedback, list projects, and resolve issues — all without leaving your editor.
+
+## Supported Agents
+
+| Agent | Status | Setup |
+|-------|--------|-------|
+| Claude Code | ✅ Native | One command |
+| Cursor | ✅ Supported | Config file |
+| Windsurf | ✅ Supported | Config file |
+
+## Claude Code
+
+```bash
+claude mcp add feedpin \
+  --transport http \
+  --url "https://feedpin.dev/api/mcp" \
+  --header "Authorization: Bearer YOUR_API_KEY"
+```
+
+<Info>Find your API key in [Settings](https://feedpin.dev/settings) → API & MCP section.</Info>
+
+## Cursor
+
+Add to your `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "feedpin": {
+      "transport": "http",
+      "url": "https://feedpin.dev/api/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+## Available MCP Tools
+
+Once connected, your AI agent has access to:
+
+| Tool | Description |
+|------|-------------|
+| `list_projects` | List all your sites with feedback counts |
+| `get_feedbacks` | Get active or resolved feedbacks for a project |
+| `resolve_feedback` | Mark a feedback as resolved |
+| `export_markdown` | Export feedbacks as structured markdown |
+| `add_site` | Create a new project and get the installation snippet |
+| `get_snippet` | Get the installation snippet for an existing project |
+
+### Example Usage
+
+Ask your AI agent:
+- *"What feedback is pending on my sites?"*
+- *"Show me the active feedbacks for mysite.com"*
+- *"Resolve feedback #abc123"*
+- *"Export all feedbacks for mysite.com as markdown"*
+- *"Add a new site example.com and give me the snippet"*

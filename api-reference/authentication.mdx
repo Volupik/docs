@@ -1,0 +1,43 @@
+---
+title: Authentication
+description: How to authenticate with the FeedPin API.
+---
+
+## API Key
+
+All authenticated endpoints use Bearer token authentication.
+
+```bash
+Authorization: Bearer YOUR_API_KEY
+```
+
+### Getting Your API Key
+
+1. Go to [feedpin.dev/settings](https://feedpin.dev/settings)
+2. Scroll to **API & MCP** section
+3. Click **Show** to reveal your key
+4. Copy it
+
+<Warning>Keep your API key secret. Never expose it in client-side code or commit it to version control.</Warning>
+
+### Using the API Key
+
+<CodeGroup>
+```bash cURL
+curl https://feedpin.dev/api/v1/projects \
+  -H "Authorization: Bearer fp_abc123..."
+```
+
+```javascript JavaScript
+const res = await fetch("https://feedpin.dev/api/v1/projects", {
+  headers: { Authorization: "Bearer fp_abc123..." }
+})
+const projects = await res.json()
+```
+
+```python Python
+import requests
+headers = {"Authorization": "Bearer fp_abc123..."}
+projects = requests.get("https://feedpin.dev/api/v1/projects", headers=headers).json()
+```
+</CodeGroup>

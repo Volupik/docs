@@ -1,0 +1,37 @@
+---
+title: AI Export
+description: Export feedbacks as structured markdown for any AI assistant.
+---
+
+## Dashboard Export
+
+In the project detail page, click **"Export for AI"** to copy all active feedbacks as structured markdown. Paste it into any AI assistant.
+
+## Format
+
+```markdown
+# Feedbacks for mysite.com
+
+## Feedback 1
+- **Text:** "The checkout button is broken on mobile"
+- **Page:** /checkout
+- **Position:** 45%, 62%
+- **Device:** iPhone 15 · Safari · 390×844
+- **Date:** 2 hours ago
+
+## Feedback 2
+- **Text:** "Logo is too small on the homepage"
+- **Page:** /
+- **Position:** 12%, 8%
+- **Device:** Chrome · macOS · 1440×900
+- **Date:** 1 day ago
+```
+
+## API Export
+
+Use the MCP `export_markdown` tool or the REST API:
+
+```bash
+curl https://feedpin.dev/api/v1/comments?project_id=YOUR_PROJECT_ID \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```

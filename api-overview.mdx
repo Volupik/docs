@@ -1,0 +1,47 @@
+---
+title: API Overview
+description: FeedPin REST API for automation and integration.
+---
+
+## Base URL
+
+```
+https://feedpin.dev/api/v1
+```
+
+## Authentication
+
+All authenticated endpoints require a Bearer token:
+
+```bash
+curl https://feedpin.dev/api/v1/projects \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+Find your API key in [Settings](https://feedpin.dev/settings).
+
+## Rate Limits
+
+- **Free plan:** 50 feedbacks/month per project
+- **Indie/Unlimited:** No rate limits on feedbacks
+- **API calls:** 1000 requests/minute
+
+## Endpoints
+
+| Method | Path | Description | Auth |
+|--------|------|-------------|------|
+| GET | `/projects` | List projects | ✅ |
+| POST | `/projects` | Create project | ✅ |
+| GET | `/comments` | List feedbacks | ✅ or widget |
+| POST | `/comment` | Submit feedback | Public |
+| PATCH | `/comments/:id` | Resolve feedback | ✅ |
+| POST | `/ping` | Widget heartbeat | Public |
+
+## MCP Protocol
+
+FeedPin also supports the Model Context Protocol at:
+```
+https://feedpin.dev/api/mcp
+```
+
+See [MCP Setup](/mcp-setup) for details.

@@ -1,0 +1,38 @@
+---
+title: Quick Start
+description: Get FeedPin running on your website in under 2 minutes.
+---
+
+## Step 1: Create an account
+
+Go to [feedpin.dev/login](https://feedpin.dev/login) and sign in with Google or a magic link.
+
+## Step 2: Add your site
+
+In the dashboard, click **"+ Add Site"** and enter your website domain.
+
+## Step 3: Install the snippet
+
+Copy the script tag and add it before the closing `</body>` tag of your website:
+
+```html
+<script
+  src="https://feedpin.dev/snippet.js"
+  data-api-url="https://feedpin.dev/api/v1"
+  data-project-id="YOUR_PROJECT_ID"
+  defer>
+</script>
+```
+
+<Info>Replace `YOUR_PROJECT_ID` with the ID shown in your dashboard.</Info>
+
+## Step 4: Connect your AI agent (optional)
+
+```bash
+claude mcp add feedpin \
+  --transport http \
+  --url "https://feedpin.dev/api/mcp" \
+  --header "Authorization: Bearer YOUR_API_KEY"
+```
+
+That's it! Your clients can now pin feedback on your website, and your AI agent can read and fix it.

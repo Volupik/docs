@@ -1,0 +1,82 @@
+---
+title: Widget Installation
+description: Install the FeedPin feedback widget on any website.
+---
+
+## Script Tag
+
+Add this snippet before the closing `</body>` tag:
+
+```html
+<script
+  src="https://feedpin.dev/snippet.js"
+  data-api-url="https://feedpin.dev/api/v1"
+  data-project-id="YOUR_PROJECT_ID"
+  defer>
+</script>
+```
+
+## How It Works
+
+Once installed, a small feedback button appears on your site. Visitors can:
+1. Click the button to enter feedback mode
+2. Click anywhere on the page to place a pin
+3. Type their feedback and submit
+
+The widget captures:
+- **Text** — The feedback message
+- **URL** — The page where feedback was left
+- **Position** — Exact x/y coordinates of the pin
+- **Device** — Browser, OS, and viewport dimensions
+- **Session** — Anonymous session token (no account needed)
+
+## Framework Examples
+
+<Tabs>
+  <Tab title="Next.js">
+    Add to your `app/layout.tsx`:
+    ```tsx
+    export default function RootLayout({ children }) {
+      return (
+        <html>
+          <body>
+            {children}
+            <script
+              src="https://feedpin.dev/snippet.js"
+              data-api-url="https://feedpin.dev/api/v1"
+              data-project-id="YOUR_PROJECT_ID"
+              defer
+            />
+          </body>
+        </html>
+      )
+    }
+    ```
+  </Tab>
+  <Tab title="WordPress">
+    Add to your theme's `footer.php` before `</body>`:
+    ```php
+    <script
+      src="https://feedpin.dev/snippet.js"
+      data-api-url="https://feedpin.dev/api/v1"
+      data-project-id="<?php echo 'YOUR_PROJECT_ID'; ?>"
+      defer>
+    </script>
+    ```
+  </Tab>
+  <Tab title="HTML">
+    Add before `</body>`:
+    ```html
+    <script
+      src="https://feedpin.dev/snippet.js"
+      data-api-url="https://feedpin.dev/api/v1"
+      data-project-id="YOUR_PROJECT_ID"
+      defer>
+    </script>
+    ```
+  </Tab>
+</Tabs>
+
+## Verifying Installation
+
+After installing, go to your FeedPin dashboard. If the snippet is working, your site will show a green **"Connected"** status within a few seconds.

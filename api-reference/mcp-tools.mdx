@@ -1,0 +1,67 @@
+---
+title: MCP Tools
+description: Model Context Protocol tools available in FeedPin.
+---
+
+FeedPin exposes an MCP server at `https://feedpin.dev/api/mcp` using HTTP Streamable Transport (JSON-RPC 2.0).
+
+## Authentication
+
+Include your API key as a Bearer token:
+```
+Authorization: Bearer YOUR_API_KEY
+```
+
+## Available Tools
+
+### list_projects
+List all projects with active feedback counts.
+
+**Parameters:** None
+
+**Returns:** Array of projects with `id`, `domain`, `name`, and `active_feedbacks` count.
+
+### get_feedbacks
+Get feedbacks for a specific project.
+
+**Parameters:**
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| project_id | string | ✅ | Project UUID |
+| status | string | - | `active` (default) or `resolved` |
+
+### resolve_feedback
+Mark a feedback as resolved.
+
+**Parameters:**
+| Name | Type | Required |
+|------|------|----------|
+| feedback_id | string | ✅ |
+
+### export_markdown
+Export all active feedbacks for a project as structured markdown.
+
+**Parameters:**
+| Name | Type | Required |
+|------|------|----------|
+| project_id | string | ✅ |
+
+### add_site
+Create a new project and get the installation snippet.
+
+**Parameters:**
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| domain | string | ✅ | Website domain (e.g. "mysite.com") |
+
+**Returns:** Project ID and the HTML snippet to install.
+
+### get_snippet
+Get the installation snippet for an existing project.
+
+**Parameters:**
+| Name | Type | Required |
+|------|------|----------|
+| project_id | string | ✅ |
+
+**Returns:** The HTML script tag to install on the website.

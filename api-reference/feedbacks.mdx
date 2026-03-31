@@ -1,0 +1,70 @@
+---
+title: Feedbacks
+description: List, submit, and resolve visual feedbacks.
+---
+
+## List Feedbacks
+
+<ParamField path="GET" query="/comments">
+  Returns feedbacks for a project.
+</ParamField>
+
+| Param | Type | Required | Description |
+|-------|------|----------|-------------|
+| project_id | UUID | ✅ | Project ID |
+| status | string | - | `active` or `resolved` |
+
+```bash
+curl "https://feedpin.dev/api/v1/comments?project_id=YOUR_PROJECT_ID" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+**Response:**
+```json
+[
+  {
+    "id": "feedback-uuid",
+    "text": "Button broken on mobile",
+    "url": "https://mysite.com/checkout",
+    "x_percent": 45.2,
+    "y_percent": 62.8,
+    "user_agent": "Mozilla/5.0...",
+    "viewport": { "width": 390, "height": 844 },
+    "resolved": false,
+    "created_at": "2026-03-31T10:00:00Z"
+  }
+]
+```
+
+## Submit Feedback (Public)
+
+<ParamField path="POST" query="/comment">
+  Submit a new feedback. This is a public endpoint used by the widget — no authentication required.
+</ParamField>
+
+**Body:**
+```json
+{
+  "project_id": "project-uuid",
+  "text": "This button doesn't work",
+  "url": "https://mysite.com/page",
+  "x_percent": 45.2,
+  "y_percent": 62.8,
+  "user_agent": "Mozilla/5.0...",
+  "viewport": { "width": 1440, "height": 900 },
+  "session_token": "anonymous-uuid"
+}
+```
+
+## Resolve Feedback
+
+<ParamField path="PATCH" query="/comments/:id">
+  Mark a feedback as resolved.
+</ParamField>
+
+```bash
+curl -X PATCH "https://feedpin.dev/api/v1/comments/FEEDBACK_ID" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"resolved": true}'
+```

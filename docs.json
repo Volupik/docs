@@ -1,0 +1,65 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "FeedPin Docs",
+  "colors": {
+    "primary": "#FF6B2C",
+    "light": "#FF8B5C",
+    "dark": "#E55A1B"
+  },
+  "favicon": "/favicon.svg",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "topbarLinks": [
+    { "name": "Website", "url": "https://feedpin.dev" },
+    { "name": "Dashboard", "url": "https://feedpin.dev/projects" }
+  ],
+  "topbarCtaButton": {
+    "name": "Get Started Free",
+    "url": "https://feedpin.dev/login"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": ["index", "quickstart", "widget-installation"]
+          },
+          {
+            "group": "AI Integration",
+            "pages": ["mcp-setup", "ai-export", "api-overview"]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Authentication",
+            "pages": ["api-reference/authentication"]
+          },
+          {
+            "group": "Endpoints",
+            "pages": [
+              "api-reference/projects",
+              "api-reference/feedbacks",
+              "api-reference/ping"
+            ]
+          },
+          {
+            "group": "MCP Tools",
+            "pages": ["api-reference/mcp-tools"]
+          }
+        ]
+      }
+    ]
+  },
+  "footerSocials": {
+    "github": "https://github.com/feedpin",
+    "x": "https://x.com/feedpindev"
+  }
+}

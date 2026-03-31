@@ -1,0 +1,24 @@
+---
+title: Ping
+description: Widget heartbeat endpoint for connection detection.
+---
+
+## Widget Ping
+
+<ParamField path="POST" query="/ping">
+  Sent by the FeedPin widget on page load to confirm the snippet is installed and active. Updates `last_ping_at` on the project.
+</ParamField>
+
+**Body:**
+```json
+{
+  "project_id": "valid-uuid"
+}
+```
+
+**Response:**
+```json
+{ "ok": true }
+```
+
+<Info>This is a public endpoint. The project ID must be a valid UUID format.</Info>

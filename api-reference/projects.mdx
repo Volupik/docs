@@ -1,0 +1,55 @@
+---
+title: Projects
+description: Manage your FeedPin projects (sites).
+---
+
+## List Projects
+
+<ParamField path="GET" query="/projects">
+  Returns all projects for the authenticated user.
+</ParamField>
+
+```bash
+curl https://feedpin.dev/api/v1/projects \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+**Response:**
+```json
+[
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "domain": "mysite.com",
+    "name": "mysite.com",
+    "last_ping_at": "2026-03-31T10:00:00Z",
+    "created_at": "2026-03-30T08:00:00Z"
+  }
+]
+```
+
+## Create Project
+
+<ParamField path="POST" query="/projects">
+  Create a new project. Returns the project with its ID for snippet installation.
+</ParamField>
+
+**Body:**
+```json
+{
+  "domain": "newsite.com"
+}
+```
+
+**Response (201):**
+```json
+{
+  "id": "550e8400-e29b-41d4-a716-446655440001",
+  "domain": "newsite.com",
+  "name": "newsite.com",
+  "created_at": "2026-03-31T12:00:00Z"
+}
+```
+
+**Errors:**
+- `401` — Unauthorized (invalid API key)
+- `402` — Plan limit reached
